@@ -38,11 +38,11 @@ public:
 	Game *game;
 	
 	Item(Game*, size_t, size_t, size_t);
-	virtual ~Animal() {}
+	virtual ~Item() {}
 	
-	virtual void update()=0;
-	virtual move(size_t direction, size_t step);
-	virtual remove()=0;
-	virtual show()=0;
+	virtual void update();
+	virtual void move(size_t direction, size_t step);
+	virtual void remove();
+	virtual void show();
 };
 #endif
