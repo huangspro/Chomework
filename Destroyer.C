@@ -10,3 +10,8 @@ void Destroyer::move(size_t direction, size_t step){
 void Destroyer::show(){
   game->paintAt(row, col, 'O');
 }
+
+void Destroyer::fire(){
+  if(rand()%2==0)game->addWeapon(row, col, direction, Bullet);
+  else game->addWeapon(row, col, direction, Torpedo);
+}

@@ -11,5 +11,6 @@ public:
   virtual void move(size_t direction, size_t step);
   virtual void remove();
   virtual void show();
+  virtual void fire();
 };
 #endif
