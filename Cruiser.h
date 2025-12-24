@@ -4,9 +4,10 @@
 class Cruiser : public Ship{
 public:
   Cruiser(Game* g, size_t r, size_t c):Ship(g,r,c,Cruiser){
-    health=1;
-    bullet=10;
-    missile=torpedoes=0;
+    health=100;
+    bullet=30;
+    missile=2;
+    torpedoes=0;
   }
   void move(size_t direction, size_t step);
   void show();
