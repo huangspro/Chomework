@@ -11,22 +11,23 @@ public:
       health=1;
       bullet=10;
       missile=torpedoes=0;
+    }
     else if(t==Destroyer){
       health=10;
       bullet=10;
-      Torpedoes=2;
+      torpedoes=2;
       missile=0;
     }
     else if(t==Cruiser){
       health=100;
       bullet=30;
       missile=2;
-      Torpedoes=0;
+      torpedoes=0;
     }
   }
   
   virtual void move(size_t direction, size_t step);
   virtual void remove();
   virtual void show();
-}
+};
 #endif
