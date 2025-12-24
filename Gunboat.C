@@ -8,5 +8,5 @@ void Gunboat::move(size_t direction, size_t step){
 }
 
 void Gunboat::show(){
-  
+  game->paintAt(row, col, 'o');
 }

@@ -8,7 +8,7 @@ public:
     bullet=10;
     missile=torpedoes=0;
   }
-  void move();
+  void move(size_t direction, size_t step);
   void show();
 };
 
