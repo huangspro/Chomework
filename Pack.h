@@ -1,0 +1,15 @@
+#ifndef _PACK_H_
+#define _PACK_H_
+
+#include "Item.h"
+class Game
+class Pack : public Weapon{
+public:
+  Pack(Game* g, size_t r, size_t c, size_t t):Weapon(g,r,c,0,t){}
+  virtual void move(size_t direction, size_t step);
+  virtual void show();
+  virtual void remove();
+  virtual void update();
+  virtual void check_crash();
+};
+#endif
