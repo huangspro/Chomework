@@ -6,10 +6,10 @@
 class Weapon : public Item{
 public:
   Weapon(Game* g, size_t r, size_t c, size_t v,size_t t):Item(g,r,c,v,t){}
-  virtual move(size_t direction, size_t step){Item::move(direction, step);}
-  virtual show();
-  virtual remove();
-  virtual update();
+  void virtual move(size_t direction, size_t step){Item::move(direction, step);}
+  void virtual show();
+  void virtual remove();
+  void virtual update();
 };
 
 #endif

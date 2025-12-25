@@ -3,7 +3,7 @@
 #include<stdlib>
 
 void Player::move(size_t direction, size_t step){
-  
+  Ship::move(direction, step);
 }
 
 void Player::show(){

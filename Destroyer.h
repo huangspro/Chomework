@@ -3,7 +3,7 @@
 
 class Destroyer : public Ship{
 public:
-  Destroyer(Game* g, size_t r, size_t c):Ship(g,r,c,Destroyer_v,Destroyer){
+  Destroyer(Game* g, size_t r, size_t c):Ship(g,r,c,Destroyer_v,Destroyer_n){
     health=10;
     bullet=10;
     missile=0;

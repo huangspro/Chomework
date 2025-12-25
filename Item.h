@@ -5,20 +5,20 @@
 #define MAXROW 30
 #define MAXCOL 80
 
-#define Bullet 1
-#define Torpedo 2
-#define Missile 3
+#define Bullet_n 1
+#define Torpedo_n 2
+#define Missile_n 3
 
-#define Bomber 4
-#define Cruiser 5
-#define Destroyer 6
-#define Gunboat 7
+#define Bomber_n 4
+#define Cruiser_n 5
+#define Destroyer_n 6
+#define Gunboat_n 7
 
-#define Island 8
-#define Medical 9
-#define Weapon 10
+#define Island_n 8
+#define Medical_n 9
+#define Weapon_n 10
 
-#define Player 11
+#define Player_n 11
 //define 4 direction
 #define UP 1
 #define DOWN 2
@@ -47,10 +47,10 @@ public:
 	size_t type;
 	size_t direction;
 	size_t v; //v is thee speed of item. one item move after per v turns
-	sifze_t tem=0; //this is for remember the last move
+	size_t tem=0; //this is for remember the last move
 	Game *game;
 	
-	Item(Game*, size_t, size_t, size_t);
+	Item(Game*, size_t, size_t, size_t,size_t);
 	virtual ~Item() {}
 	
 	virtual void update();

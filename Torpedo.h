@@ -3,9 +3,9 @@
 
 #include "Weaopn.h"
 class Game
-class Bullet : public Weapon{
+class Torpedo : public Weapon{
 public:
-  Bullet(Game* g, size_t r, size_t c, size_t t):Weapon(g,r,c,Bullet_v,t){}
+  Torpedo(Game* g, size_t r, size_t c, size_t t):Weapon(g,r,c,Torpedo_v,Torpedo_n){}
   move(size_t direction, size_t step);
   show();
   remove();

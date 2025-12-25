@@ -6,22 +6,22 @@ void Bullet::move(size_t direction, size_t step){
   switch(direction){
     case UP:
       for(int i=1;i<=step;i++){
-        if(game->getIsland(row-i,col)->type==Island)remove();
+        if(game->getIsland(row-i,col)->type==Island_n)remove();
       }
       break;
     case DOWN:
       for(int i=1;i<=step;i++){
-        if(game->getIsland(row+i,col)->type==Island)remove();
+        if(game->getIsland(row+i,col)->type==Island_n)remove();
       }
       break;
     case LEFT:
       for(int i=1;i<=step;i++){
-        if(game->getIsland(row,col-1)->type==Island)remove();
+        if(game->getIsland(row,col-1)->type==Island_n)remove();
       }
       break;
     case RIGHT:
       for(int i=1;i<=step;i++){
-        if(game->getIsland(row,col+1)->type==Island)remove();
+        if(game->getIsland(row,col+1)->type==Island_n)remove();
       }
       break;
   }
@@ -34,6 +34,6 @@ void Bullet::move(size_t direction, size_t step){
   }
 }
 
-Bullet::show(){
+void Bullet::show(){
   game->paintAt(row, col, direction==UP|direction==DOWN?'|':'-');
 }

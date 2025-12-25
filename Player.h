@@ -3,7 +3,7 @@
 
 class Player : public Ship{
 public:
-  Player(Game* g, size_t r, size_t c):Ship(g,r,c,Player_v,Player){
+  Player(Game* g, size_t r, size_t c):Ship(g,r,c,Player_v,Player_n){
     health=10;
     bullet=10;
     missile=0;

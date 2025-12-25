@@ -1,7 +1,7 @@
 #include "Torpedo.h"
 #include "Game.h"
 
-void Bullet::move(size_t direction, size_t step){
+void Torpedo::move(size_t direction, size_t step){
   //can not over island
   switch(direction){
     case LEFT:
@@ -24,6 +24,6 @@ void Bullet::move(size_t direction, size_t step){
   }
 }
 
-Bullet::show(){
+Torpedo::show(){
   game->paintAt(row, col, '=');
 }

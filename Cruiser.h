@@ -3,7 +3,7 @@
 
 class Cruiser : public Ship{
 public:
-  Cruiser(Game* g, size_t r, size_t c):Ship(g,r,c,Cruiser_v,Cruiser){
+  Cruiser(Game* g, size_t r, size_t c):Ship(g,r,c,Cruiser_v,Cruiser_n){
     health=100;
     bullet=30;
     missile=2;
