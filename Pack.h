@@ -2,7 +2,7 @@
 #define _PACK_H_
 
 #include "Item.h"
-class Game
+class Game;
 class Pack : public Weapon{
 public:
   Pack(Game* g, size_t r, size_t c, size_t t):Weapon(g,r,c,0,t){}

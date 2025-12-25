@@ -2,6 +2,17 @@
 #define _GAME_H_
 #include <vector>
 #include "Gui.h"
+#include "Gunboat.h"
+#include "Cruiser.h"
+#include "Destroyer.h"
+#include "Player.h"
+#include "Bullet.h"
+#include "Torpedo.h"
+#include "Missile.h"
+#include "Bomber.h"
+#include "Island.h"
+#include "Pack.h"
+#include "Ship.h"
 #include<algorithm>
 
 using namespace std;

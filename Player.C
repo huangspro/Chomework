@@ -7,7 +7,16 @@ void Player::move(size_t direction, size_t step){
 }
 
 void Player::show(){
-  game->paintAt(row, col, 'O');
+  if(direction==UP || direction==DOWN){
+    game->paintAt(row, col>0?col-1:col, '<');
+    game->paintAt(row, col<MAXCOL?col+1:col, '>');    
+    game->paintAt(row, col, '=');
+  }
+  if(direction==LEFT || direction==RIGHT){
+    game->paintAt(row<MAXROW?row+1:row, col, 'V');
+    game->paintAt(row>0?row-1:row, col, '^');
+    game->paintAt(row, col, '"');
+  }
 }
 
 void Player::fire(){
@@ -19,4 +28,7 @@ void update(){
   Item::update();
 }
 
+void Player::turn(int d){
+  direction=d;
+}
 

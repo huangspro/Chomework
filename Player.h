@@ -14,6 +14,7 @@ public:
   void show();
   void fire();
   void update();
+  void turn(int);
 };
 
 #endif

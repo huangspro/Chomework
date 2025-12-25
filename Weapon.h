@@ -2,7 +2,7 @@
 #define _WEAPON_H_
 
 #include "Item.h"
-
+class Game;
 class Weapon : public Item{
 public:
   Weapon(Game* g, size_t r, size_t c, size_t v,size_t t):Item(g,r,c,v,t){}
