@@ -13,6 +13,7 @@ class Game {
 	vector<Island*> AllIslands;
 	vector<Bomber*> AllBombers;
 	vector<Pack*> AllPacks;
+	Player* player;
 public:
 	Game();
 	Game(int);
@@ -21,5 +22,8 @@ public:
 	void printMsg(size_t r, size_t c, const char* s);
 	void update();
 	void updateItems();
+	void kill(Item*);
+	Island* getIsland(size_t, size_t);
+	Ship* getShip(size_t, size_t);
 };
 #endif

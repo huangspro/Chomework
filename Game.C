@@ -10,22 +10,46 @@ Game::Game()
     for(int i=0;i<10;i++){
       AllIslands.push_back(new Island(this,rand()%MAXROW+1,rand()%MAXCOL+1));
     }
+    player = new Player(this, 0.5*MAXROW, 0.5*MAXCOL);
 }
 
 void Game::update(){
   for(auto i=AllIslands.begin();i!=AllIslands.end();i++){
     i->update();
+    if(i->showable)i->show();
   }
   for(auto i=AllWeapons.begin();i!=AllWeapons.end();i++){
     i->update();
+    if(i->showable)i->show();
   }
   for(auto i=AllBombers.begin();i!=AllBombers.end();i++){
     i->update();
+    if(i->showable)i->show();
   }
   for(auto i=AllPacks.begin();i!=AllPacks.end();i++){
     i->update();
+    if(i->showable)i->show();
   }
   addShips();
+  switch(gui->get()){
+    case KEY_UP:
+      player.turn(UP);
+      player.update();
+      break;
+    case KEY_DOWN:
+      player.turn(DOWN);
+      player.update();
+      break;
+    case KEY_LEFT:
+      player.turn(LEFT);
+      player.update();
+      break;
+    case KEY_RIGHT:
+      player.turn(RIGHT);
+      player.update();
+      break;
+    
+  }
 }
 
 void addShips(){
@@ -36,3 +60,34 @@ void addShips(){
   }
   AllShips.push_back(new Gunboat(this, x,y));
 }
+
+void kill(Item* other){
+  if(other->type>=5 && other->type<=7){
+    for(auto i=AllShips.begin();i!=AllShips.end();i++){
+      if(other->row==i->row && other->col==i->col)i->showable=false;
+    }
+  }
+  else if(other->type>=1 && other->type<=3){
+    for(auto i=AllWeapons.begin();i!=AllWeapons.end();i++){
+      if(other->row==i->row && other->col==i->col)i->showable=false;
+    }
+  }
+  else if(other->type==4){
+    for(auto i=AllBombers.begin();i!=AllBombers.end();i++){
+      if(other->row==i->row && other->col==i->col)i->showable=false;
+    }
+  }
+}
+
+Island* getIsland(size_t, size_t){
+  for(auto i=AllIslands.begin();i!=AllIslands.end();i++){
+      if(other->row==i->row && other->col==i->col)return i;
+  }
+}
+Ship* getShip(size_t, size_t){
+  for(auto i=AllShips.begin();i!=AllShips.end();i++){
+      if(other->row==i->row && other->col==i->col)return i;
+  }
+}
+
+

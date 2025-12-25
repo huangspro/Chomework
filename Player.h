@@ -3,11 +3,12 @@
 
 class Player : public Ship{
 public:
+  size_t coins = 0;
   Player(Game* g, size_t r, size_t c):Ship(g,r,c,Player_v,Player_n){
-    health=10;
-    bullet=10;
-    missile=0;
-    torpedoes=2;
+    health=1000;
+    bullet=100;
+    missile=5;
+    torpedoes=0;
   }
   void move(size_t direction, size_t step);
   void show();

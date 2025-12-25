@@ -45,9 +45,10 @@ public:
 	size_t row;
 	size_t col;
 	size_t type;
-	size_t direction;
+	size_t direction = UP;
 	size_t v; //v is thee speed of item. one item move after per v turns
 	size_t tem=0; //this is for remember the last move
+	bool showable=true;
 	Game *game;
 	
 	Item(Game*, size_t, size_t, size_t,size_t);
