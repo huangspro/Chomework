@@ -29,3 +29,7 @@ void Ship::move(size_t direction, size_t step){
 void Ship::remove(){
   game->kill(this);
 }
+
+void Ship::update(){
+  Item::update();
+} 

@@ -5,10 +5,12 @@
 
 class Weapon : public Item{
 public:
+  Weapon(Game* g, size_t r, size_t c, size_t v,size_t t):Item(g,r,c,v,t){}
   virtual move();
   virtual check_crash();
   virtual show();
   virtual remove();
+  virtual update();
 };
 
 #endif

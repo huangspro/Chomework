@@ -12,5 +12,6 @@ public:
   virtual void remove();
   virtual void show();
   virtual void fire();
+  virtual void update();
 };
 #endif
