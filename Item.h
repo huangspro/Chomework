@@ -24,6 +24,17 @@
 #define DOWN 2
 #define LEFT 3
 #define RIGHT 4
+
+//define the speed of each item
+#define Bullet_v 2
+#define Torpedo_v 2
+#define Missile_v 1
+#define Player_v 5
+#define Bomber_v 10
+#define Cruiser_v 5
+#define Destroyer_v 5
+#define Gunboat_v 3
+
 //====================================
 #include <iostream>
 using namespace std;
@@ -35,6 +46,8 @@ public:
 	size_t col;
 	size_t type;
 	size_t direction;
+	size_t v; //v is thee speed of item. one item move after per v turns
+	sifze_t tem=0; //this is for remember the last move
 	Game *game;
 	
 	Item(Game*, size_t, size_t, size_t);

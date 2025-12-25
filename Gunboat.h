@@ -3,7 +3,7 @@
 
 class Gunboat : public Ship{
 public:
-  Gunboat(Game* g, size_t r, size_t c):Ship(g,r,c,Gunboat){
+  Gunboat(Game* g, size_t r, size_t c):Ship(g,r,c,Gunboat_v,Gunboat){
     health=1;
     bullet=10;
     missile=torpedoes=0;
