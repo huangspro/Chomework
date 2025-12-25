@@ -7,3 +7,7 @@ echo "commit========================================="
 git commit -m "1.0"
 echo "push============================================"
 git push
+
+clear
+
+echo "finished"
