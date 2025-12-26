@@ -1,0 +1,21 @@
+#ifndef _BOMBER_H_
+#define _BOMBER_H_
+#include "Item.h"
+
+class Game;
+class Bomber : public Ship{
+public:
+  Bomber(Game* g, size_t r, size_t c):Item(g,r,c,Bomber_v,Bomber_n){
+    bullet=3;
+    health=10000;
+    missile=torpedoes=1;
+    direction=RIGHR;
+  }
+  void move(size_t direction, size_t step);
+  void show();  
+  void fire();  
+  void remove();//do nothing, for the bomber can't be desstroy
+  void update();
+};
+
+#endif
