@@ -14,6 +14,8 @@ Game::Game()
 }
 
 void Game::update(){
+  if(player->health<=0)exit(0);
+  //here can clear the killed ships
   for(auto i=AllIslands.begin();i!=AllIslands.end();i++){
     (*i)->update();
     if((*i)->showable)(*i)->show();
