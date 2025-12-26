@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include<stdlib.h>
 #include <ctime>
 #include <vector>
 #include "Game.h"
@@ -91,4 +92,14 @@ Ship* Game::getShip(size_t row, size_t col){
 
 void Game::addWeapons(){
   
+}
+
+void Game::paintAt(size_t r, size_t c, char x)
+{
+    gui.paintat(r, c, x);
+}
+
+void Game::printMsg(size_t r, size_t c, const char *s)
+{
+    gui.printMsg(r, c, s);
 }

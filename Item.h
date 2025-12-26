@@ -56,7 +56,7 @@ public:
 	
 	virtual void update();
 	virtual void move(size_t direction, size_t step);
-	virtual void remove();
-	virtual void show();
+	virtual void remove(){};
+	virtual void show(){};
 };
 #endif

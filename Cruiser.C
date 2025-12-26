@@ -16,3 +16,11 @@ void Cruiser::fire(){
   if(rand()%2==0)game->addWeapon(row, col, direction, Bullet);
   else game->addWeapon(row, col, direction, Missile);
 }*/
+
+void Cruiser::fire(){
+
+}
+
+void Cruiser::update(){
+
+}

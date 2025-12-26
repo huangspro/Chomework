@@ -24,7 +24,8 @@ void Player::fire(){
   else game->addWeapon(row, col, direction, Torpedo);
 }*/
 
-void update(){
+void Player::update(){
+  return;
 }
 
 void Player::turn(int d){

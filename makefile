@@ -2,7 +2,7 @@
 
 # Compiler and flags
 CC = g++
-CFLAGS = -Wall -Wextra -std=c++11 -O2
+CFLAGS = -w -Wextra -std=c++11 -O2
 LDFLAGS = -lncurses
 
 # Target executable
@@ -26,6 +26,7 @@ SRCS = \
 	Ship.C \
 	Torpedo.C \
 	Weapon.C \
+	Island.C \
 	WeaponPack.C
 
 # Object files

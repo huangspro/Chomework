@@ -28,7 +28,7 @@ class Game {
 public:
 	Game();
 	Game(int);
-	~Game() ;
+	~Game(){}
 	void paintAt(size_t r, size_t c, char x);
 	void printMsg(size_t r, size_t c, const char* s);
 	void update();

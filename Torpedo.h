@@ -8,7 +8,7 @@ public:
   Torpedo(Game* g, size_t r, size_t c, size_t t):Weapon(g,r,c,Torpedo_v,Torpedo_n){}
   void move(size_t direction, size_t step);
   void show();
-  void remove();
-  void update();
+  void remove(){};
+  void update(){};
 };
 #endif

@@ -3,12 +3,13 @@
 
 #include "Item.h"
 class Game;
-class Island : public Weapon{
+class Island : public Item{
 public:
-  Island(Game* g, size_t r, size_t c):Weapon(g,r,c,0,Island_n){}
-  void move(size_t direction, size_t step);
+  Island(Game* g, size_t r, size_t c):Item(g,r,c,0,Island_n){}
+  ~Island(){}
+  void move(size_t direction, size_t step){};
   void show();
-  void remove();
+  void remove(){};
   void update();
 };
 #endif

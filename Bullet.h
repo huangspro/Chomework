@@ -8,7 +8,7 @@ public:
   Bullet(Game* g, size_t r, size_t c, size_t t):Weapon(g,r,c,Bullet_v,t){}
   void move(size_t direction, size_t step);
   void show();
-  void remove();
+  void remove(){};
   void update();
 };
 #endif
