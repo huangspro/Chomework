@@ -1,4 +1,5 @@
 #include "Bomber.h"
+#include "Game.h"
 
 //the show function maybe complex, so the bomber's position must be initialized from the 2nd line
 void Bomber::show(){
@@ -18,5 +19,14 @@ void Bomber::show(){
 
 void BOmber::fire(){
   
+}
+
+void Bomber::update(){
+  Item::update();
+  move();
+}
+
+void Bomber::move(size_t direction, size_t step){
+  Item::mvoe();
 }
 

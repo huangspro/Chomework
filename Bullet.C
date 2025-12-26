@@ -37,3 +37,7 @@ void Bullet::move(size_t direction, size_t step){
 void Bullet::show(){
   game->paintAt(row, col, direction==UP|direction==DOWN?'|':'-');
 }
+
+void Bullet::update(){
+
+}
