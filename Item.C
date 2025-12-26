@@ -1,6 +1,6 @@
 #include "Item.h";
 
-Item::Item(Game* g, size_t r, size_t c,size_t v, size_t t):game(g),row(t),col(c),type(t),v(V){}
+Item::Item(Game* g, size_t r, size_t c,size_t v, size_t t):game(g),row(t),col(c),type(t),v(v){}
 
 //we do not deal with island here, for some items like missile can fly over it
 void Item::move(size_t direction, size_t step){

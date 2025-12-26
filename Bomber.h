@@ -13,7 +13,7 @@ public:
     torpedo=1;
     direction=RIGHT;
   }
-  void move(size_t, size_t);
+  void move(size_t d, size_t s);
   void show();  
   void fire();  
   void remove();//do nothing, for the bomber can't be desstroy

@@ -36,5 +36,7 @@ public:
 	void kill(Item*);
 	Island* getIsland(size_t, size_t);
 	Ship* getShip(size_t, size_t);
+	void addShips();
+	void addWeapons();
 };
 #endif

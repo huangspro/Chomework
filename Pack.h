@@ -3,9 +3,9 @@
 
 #include "Item.h"
 class Game;
-class Pack : public Weapon{
+class Pack : public Item{
 public:
-  Pack(Game* g, size_t r, size_t c, size_t t):Weapon(g,r,c,0,t){}
+  Pack(Game* g, size_t r, size_t c, size_t t):Item(g,r,c,0,t){}
   virtual void move(size_t direction, size_t step);
   virtual void show();
   virtual void remove();

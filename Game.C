@@ -14,79 +14,81 @@ Game::Game()
 
 void Game::update(){
   for(auto i=AllIslands.begin();i!=AllIslands.end();i++){
-    i->update();
-    if(i->showable)i->show();
+    (*i)->update();
+    if((*i)->showable)(*i)->show();
   }
   for(auto i=AllWeapons.begin();i!=AllWeapons.end();i++){
-    i->update();
-    if(i->showable)i->show();
+    (*i)->update();
+    if((*i)->showable)(*i)->show();
   }
   for(auto i=AllBombers.begin();i!=AllBombers.end();i++){
-    i->update();
-    if(i->showable)i->show();
+    (*i)->update();
+    if((*i)->showable)(*i)->show();
   }
   for(auto i=AllPacks.begin();i!=AllPacks.end();i++){
-    i->update();
-    if(i->showable)i->show();
+    (*i)->update();
+    if((*i)->showable)(*i)->show();
   }
   addShips();
-  switch(gui->get()){
+  switch(gui.get()){
     case KEY_UP:
-      player.turn(UP);
-      player.update();
+      player->turn(UP);
+      player->update();
       break;
     case KEY_DOWN:
-      player.turn(DOWN);
-      player.update();
+      player->turn(DOWN);
+      player->update();
       break;
     case KEY_LEFT:
-      player.turn(LEFT);
-      player.update();
+      player->turn(LEFT);
+      player->update();
       break;
     case KEY_RIGHT:
-      player.turn(RIGHT);
-      player.update();
+      player->turn(RIGHT);
+      player->update();
       break;
     
   }
 }
 
-void addShips(){
+void Game::addShips(){
   size_t x=rand()%MAXROW+1;
   size_t y=rand()%MAXCOL+1;
   for(auto i=AllIslands.begin();i!=AllIslands.end();i++){
-    if(x==i->row && y==i->col)addShips();
+    if(x==(*i)->row && y==(*i)->col)addShips();
   }
   AllShips.push_back(new Gunboat(this, x,y));
 }
 
-void kill(Item* other){
+void Game::kill(Item* other){
   if(other->type>=5 && other->type<=7){
     for(auto i=AllShips.begin();i!=AllShips.end();i++){
-      if(other->row==i->row && other->col==i->col)i->showable=false;
+      if(other->row==(*i)->row && other->col==(*i)->col)(*i)->showable=false;
     }
   }
   else if(other->type>=1 && other->type<=3){
     for(auto i=AllWeapons.begin();i!=AllWeapons.end();i++){
-      if(other->row==i->row && other->col==i->col)i->showable=false;
+      if(other->row==(*i)->row && other->col==(*i)->col)(*i)->showable=false;
     }
   }
   else if(other->type==4){
     for(auto i=AllBombers.begin();i!=AllBombers.end();i++){
-      if(other->row==i->row && other->col==i->col)i->showable=false;
+      if(other->row==(*i)->row && other->col==(*i)->col)(*i)->showable=false;
     }
   }
 }
 
-Island* getIsland(size_t, size_t){
+Island* Game::getIsland(size_t row, size_t col){
   for(auto i=AllIslands.begin();i!=AllIslands.end();i++){
-      if(other->row==i->row && other->col==i->col)return i;
+      if(row==(*i)->row && col==(*i)->col)return (*i);
   }
 }
-Ship* getShip(size_t, size_t){
+Ship* Game::getShip(size_t row, size_t col){
   for(auto i=AllShips.begin();i!=AllShips.end();i++){
-      if(other->row==i->row && other->col==i->col)return i;
+      if(row==(*i)->row && col==(*i)->col)return (*i);
   }
 }
 
-
+void Game::addWeapons(){
+  
+}

@@ -10,7 +10,7 @@
 using namespace std;
 
 
-int main(int argc, char* argv[])
+int main()
 {
     srand(time(0));
     struct timeval time_now;
@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
     gettimeofday(&time_now, NULL);
     time_t oldTime = (time_now.tv_sec * 1000) + (time_now.tv_usec / 1000);
     time_t currentTime =  oldTime;
-    Game game(std::atoi(argv[1]),std::atoi(argv[2]));
+    Game game;
     while (true) {
         gettimeofday(&time_now, NULL);
         currentTime = (time_now.tv_sec * 1000) + (time_now.tv_usec / 500);

@@ -28,7 +28,7 @@ void Bullet::move(size_t direction, size_t step){
   //use father class move
   Weapon::move(direction,step);
   //check crash
-  Ship* temm = game->getShip();
+  Ship* temm = game->getShip(row, col);
   if(temm!=nullptr){
     temm->health-=1;
   }

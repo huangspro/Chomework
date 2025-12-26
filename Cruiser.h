@@ -1,6 +1,9 @@
 #ifndef _CRUISER_H_
 #define _CRUISER_H_
+#include "Ship.h"
 
+
+class Game;
 class Cruiser : public Ship{
 public:
   Cruiser(Game* g, size_t r, size_t c):Ship(g,r,c,Cruiser_v,Cruiser_n){

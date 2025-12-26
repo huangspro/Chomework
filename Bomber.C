@@ -23,7 +23,7 @@ void Bomber::fire(){
 
 void Bomber::update(){
   Item::update();
-  move();
+  move(direction, 1);
 }
 
 void Bomber::move(size_t direction, size_t step){
