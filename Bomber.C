@@ -17,7 +17,7 @@ void Bomber::show(){
   }
 }
 
-void BOmber::fire(){
+void Bomber::fire(){
   
 }
 
@@ -27,6 +27,6 @@ void Bomber::update(){
 }
 
 void Bomber::move(size_t direction, size_t step){
-  Item::mvoe();
+  Item::move(direction, step);
 }
 

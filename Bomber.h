@@ -3,15 +3,17 @@
 #include "Item.h"
 
 class Game;
-class Bomber : public Ship{
+class Bomber : public Item{
 public:
+  size_t bullet,health,missile,torpedo;
   Bomber(Game* g, size_t r, size_t c):Item(g,r,c,Bomber_v,Bomber_n){
     bullet=3;
     health=10000;
-    missile=torpedoes=1;
-    direction=RIGHR;
+    missile=0;
+    torpedo=1;
+    direction=RIGHT;
   }
-  void move(size_t direction, size_t step);
+  void move(size_t, size_t);
   void show();  
   void fire();  
   void remove();//do nothing, for the bomber can't be desstroy

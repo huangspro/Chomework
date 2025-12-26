@@ -39,5 +39,5 @@ void Bullet::show(){
 }
 
 void Bullet::update(){
-
+  Item::update();
 }
