@@ -1,0 +1,94 @@
+@startuml
+class Item{
+    -row:int
+    -col:int
+    -direction:int
+    -type:int
+    -showable
+    +update: void
+    +move: void
+    +remove: void
+}
+
+class Ship{
+    -health
+    -bullet
+    -misssile
+    -torpedo
+    
+    +fire: void
+    +move:void
+    +remove:void
+}
+
+class Weapon{
+    -sender
+    +check_crash:void
+}
+
+class Player{}
+class Gunboat{}
+class Cruiser{}
+class Destroyer{}
+class Bomber{}
+class Bullet{}
+class Missile{}
+class Torpedo{}
+class Island{}
+class Pack{
+    +check_crash:void
+}
+class WeaponPack{}
+class MedicalPack{}
+class Game{
+    -AllShips:vector<Ship*>
+    -AllWeapons:vector<Weapon*>
+    -AllIsland:vector<Island*>
+    -AllPacks:vector<Pack*>
+    +kill(Ship*):void
+    +addWeapon(row,col):void
+    +addShip(row,col):void
+    +addPack(row,col):void
+    +update:void
+    +updateItems:void
+    +getShip(row,col):Ship*
+    +getIsland(row,col):bool
+    +paintAt(row,col,char*):void
+    +paintMsg(row,col,char*):void
+}
+
+class Gui{
+    finish some keyboard-input detect task
+}
+class main{
+    update
+}
+Item <|-- Ship
+Item <|-- Weapon
+Item <|-- Bomber : can't be detroy
+Item <|-- Pack
+Item <|-- Island
+Weapon <|-- Bullet
+Weapon <|-- Missile
+Weapon <|-- Torpedo
+Pack <|-- MedicalPack
+Pack <|-- WeaponPack
+Ship <|-- Player : control by user
+Ship <|-- Destroyer
+Ship <|-- Cruiser
+Ship <|-- Gunboat
+
+Island ..>Game
+Player ..>Game
+Cruiser ..>Game
+Destroyer ..>Game
+Gunboat ..>Game
+Bullet ..>Game
+Torpedo ..>Game
+Missile ..>Game
+MedicalPack ..>Game
+WeaponPack ..>Game
+
+Game ..> Gui
+main ..> Game
+@enduml
