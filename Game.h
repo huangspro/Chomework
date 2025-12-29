@@ -13,6 +13,8 @@
 #include "Island.h"
 #include "Pack.h"
 #include "Ship.h"
+//#include "MedicalPack.h"
+//#include "WeaponPack.h"
 #include<algorithm>
 
 using namespace std;
@@ -39,5 +41,6 @@ public:
 	void addShips();
 	void addWeapons(size_t,size_t,int,size_t);
 	void addBomber();
+	void addPacks();
 };
 #endif

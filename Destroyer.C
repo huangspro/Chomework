@@ -19,4 +19,5 @@ void Destroyer::fire(){
 void Destroyer::update(){
   Ship::update();
   move(direction,1);
+  if(rand()%10<2)fire();
 }

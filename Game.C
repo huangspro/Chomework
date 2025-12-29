@@ -40,6 +40,7 @@ void Game::update(){
   addShips();
   addBomber();
   addWeapons(5,5,Torpedo_n,RIGHT);
+  addPacks();
   switch(gui.get()){
     case KEY_UP:
       player->turn(UP);
@@ -60,6 +61,14 @@ void Game::update(){
     player->show();
   }
 }
+void Game::addPacks(){
+  if(rand()%50>2)return;
+  size_t x=rand()%MAXROW+1;
+  size_t y=rand()%MAXCOL+1;
+  //if(rand()%2==0)AllPacks.push_back(new WeaponPack(this, x,y));
+  //else AllPacks.push_back(new MedicalPack(this, x,y));
+}
+
 void Game::addBomber(){
   if(rand()%50>2)return;
   size_t x=rand()%MAXROW+1;

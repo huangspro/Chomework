@@ -6,22 +6,18 @@ void Torpedo::move(size_t direction, size_t step){
   switch(direction){
     case LEFT:
       for(int i=1;i<=step;i++){
-        if(game->getIsland(row,col-1)->type==Island_n)remove();
+        if(game->getIsland(row,col-1))remove();
       }
       break;
     case RIGHT:
       for(int i=1;i<=step;i++){
-        if(game->getIsland(row,col+1)->type==Island_n)remove();
+        if(game->getIsland(row,col+1))remove();
       }
       break;
   }
   //use father class move
   Weapon::move(direction,step);
-  //check crash
-  Ship* temm = game->getShip(row,col);
-  if(temm!=nullptr){
-    temm->health-=10;
-  }
+  
 }
 
 void Torpedo::show(){

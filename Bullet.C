@@ -6,32 +6,27 @@ void Bullet::move(size_t direction, size_t step){
   switch(direction){
     case UP:
       for(int i=1;i<=step;i++){
-        if(game->getIsland(row-i,col)->type==Island_n)remove();
+        if(game->getIsland(row-i,col))remove();
       }
       break;
     case DOWN:
       for(int i=1;i<=step;i++){
-        if(game->getIsland(row+i,col)->type==Island_n)remove();
+        if(game->getIsland(row+i,col))remove();
       }
       break;
     case LEFT:
       for(int i=1;i<=step;i++){
-        if(game->getIsland(row,col-1)->type==Island_n)remove();
+        if(game->getIsland(row,col-1))remove();
       }
       break;
     case RIGHT:
       for(int i=1;i<=step;i++){
-        if(game->getIsland(row,col+1)->type==Island_n)remove();
+        if(game->getIsland(row,col+1))remove();
       }
       break;
   }
   //use father class move
   Weapon::move(direction,step);
-  //check crash
-  Ship* temm = game->getShip(row, col);
-  if(temm!=nullptr){
-    temm->health-=1;
-  }
 }
 
 void Bullet::show(){
