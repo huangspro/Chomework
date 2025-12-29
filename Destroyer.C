@@ -15,3 +15,8 @@ void Destroyer::fire(){
   if(rand()%2==0)game->addWeapon(row, col, direction, Bullet);
   else game->addWeapon(row, col, direction, Torpedo);
 }*/
+
+void Destroyer::update(){
+  Ship::update();
+  move();
+}
