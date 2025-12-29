@@ -5,7 +5,7 @@
 class Game;
 class Bullet : public Weapon{
 public:
-  Bullet(Game* g, size_t r, size_t c, size_t t):Weapon(g,r,c,Bullet_v,t){}
+  Bullet(Game* g, size_t r, size_t c):Weapon(g,r,c,Bullet_v,Bullet_n){}
   void move(size_t direction, size_t step);
   void show();
   void remove(){};

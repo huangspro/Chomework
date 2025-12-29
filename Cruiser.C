@@ -3,8 +3,8 @@
 #include<stdlib.h>
 
 void Cruiser::move(size_t direction, size_t step){
-  size_t d[]={1,2,3,4};
-  Ship::move(d[rand()%4], 1);
+  size_t d[]={3,4};
+  Ship::move(d[rand()%2], 1);
 }
 
 void Cruiser::show(){
@@ -22,5 +22,7 @@ void Cruiser::fire(){
 }
 
 void Cruiser::update(){
-
+  Ship::update();
+  move(direction, 1);
+  if(rand()%10<3)fire();
 }

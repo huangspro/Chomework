@@ -34,9 +34,10 @@ public:
 	void update();
 	void updateItems();
 	void kill(Item*);
-	Island* getIsland(size_t, size_t);
+	bool getIsland(size_t, size_t);
 	Ship* getShip(size_t, size_t);
 	void addShips();
-	void addWeapons();
+	void addWeapons(size_t,size_t,int,size_t);
+	void addBomber();
 };
 #endif

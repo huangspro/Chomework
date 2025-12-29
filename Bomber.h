@@ -16,7 +16,7 @@ public:
   void move(size_t d, size_t s);
   void show();  
   void fire();  
-  void remove(){};//do nothing, for the bomber can't be desstroy
+  void remove(){};//do nothing, for the bomber can't be destroy
   void update();
 };
 

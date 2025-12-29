@@ -11,16 +11,21 @@ Game::Game()
       AllIslands.push_back(new Island(this,rand()%MAXROW+1,rand()%MAXCOL+1));
     }
     player = new Player(this, 0.5*MAXROW, 0.5*MAXCOL);
+    printMsg(0,0,"here");
 }
 
 void Game::update(){
+  clear();refresh();
   if(player->health<=0)exit(0);
   //here can clear the killed ships
   for(auto i=AllIslands.begin();i!=AllIslands.end();i++){
-    (*i)->update();
     if((*i)->showable)(*i)->show();
   }
   for(auto i=AllWeapons.begin();i!=AllWeapons.end();i++){
+    (*i)->update();
+    if((*i)->showable)(*i)->show();
+  }
+  for(auto i=AllShips.begin();i!=AllShips.end();i++){
     (*i)->update();
     if((*i)->showable)(*i)->show();
   }
@@ -33,6 +38,8 @@ void Game::update(){
     if((*i)->showable)(*i)->show();
   }
   addShips();
+  addBomber();
+  addWeapons(5,5,Torpedo_n,RIGHT);
   switch(gui.get()){
     case KEY_UP:
       player->turn(UP);
@@ -50,17 +57,42 @@ void Game::update(){
       player->turn(RIGHT);
       player->update();
       break;
-    
+    player->show();
   }
 }
-
+void Game::addBomber(){
+  if(rand()%50>2)return;
+  size_t x=rand()%MAXROW+1;
+  size_t y=rand()%MAXCOL+1;
+  Bomber* newone=new Bomber(this, x,y);
+  newone->direction=LEFT;
+  AllBombers.push_back(newone);
+}
 void Game::addShips(){
+  if(rand()%50>2)return;
+  Ship* newone;
   size_t x=rand()%MAXROW+1;
   size_t y=rand()%MAXCOL+1;
   for(auto i=AllIslands.begin();i!=AllIslands.end();i++){
-    if(x==(*i)->row && y==(*i)->col)addShips();
+    if(x!=(*i)->row && y!=(*i)->col){
+      switch(rand()%3){
+        case 0:
+          newone=new Gunboat(this, x,y);
+          newone->direction=UP;
+          AllShips.push_back(newone);break;
+        case 1:
+          newone=new Cruiser(this, x,y);
+          newone->direction=LEFT;
+          AllShips.push_back(newone);break;
+        case 2:
+          newone=new Destroyer(this, x,y);
+          newone->direction=UP;
+          AllShips.push_back(newone);break;
+      }
+    }
+    else return;
   }
-  AllShips.push_back(new Gunboat(this, x,y));
+  
 }
 
 void Game::kill(Item* other){
@@ -81,9 +113,11 @@ void Game::kill(Item* other){
   }
 }
 
-Island* Game::getIsland(size_t row, size_t col){
+bool Game::getIsland(size_t row, size_t col){
+  if(row>0 && row<=MAXROW && col>0 && col<=MAXCOL)return false;
   for(auto i=AllIslands.begin();i!=AllIslands.end();i++){
-      if(row==(*i)->row && col==(*i)->col)return (*i);
+      if(row==(*i)->row && col==(*i)->col)return true;
+      else return false;
   }
 }
 Ship* Game::getShip(size_t row, size_t col){
@@ -92,8 +126,22 @@ Ship* Game::getShip(size_t row, size_t col){
   }
 }
 
-void Game::addWeapons(){
-  
+void Game::addWeapons(size_t r,size_t c,int type,size_t d){
+  Weapon* newone;
+  switch(type){
+    case Torpedo_n:
+      newone=new Torpedo(this, r,c);
+      newone->direction=d;
+      AllWeapons.push_back(newone);break;
+    case Bullet_n:
+      newone=new Bullet(this, r,c);
+      newone->direction=d;
+      AllWeapons.push_back(newone);break;
+    case Missile_n:
+      newone=new Missile(this, r,c);
+      newone->direction=d;
+      AllWeapons.push_back(newone);break;
+    }
 }
 
 void Game::paintAt(size_t r, size_t c, char x)

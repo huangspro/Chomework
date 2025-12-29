@@ -24,9 +24,10 @@ void Bomber::fire(){
 void Bomber::update(){
   Item::update();
   move(direction, 1);
+  if(rand()%10==0)fire();
 }
 
-void Bomber::move(size_t direction, size_t step){
+void Bomber::move(size_t directions, size_t step){
   Item::move(direction, step);
 }
 
