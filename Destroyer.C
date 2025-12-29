@@ -18,5 +18,5 @@ void Destroyer::fire(){
 
 void Destroyer::update(){
   Ship::update();
-  move();
+  move(direction,1);
 }
