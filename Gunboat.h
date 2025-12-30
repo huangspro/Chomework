@@ -11,8 +11,9 @@ public:
   }
   void move(size_t direction, size_t step);
   void show();
-  void fire(){};
+  void fire();
   void update();
+  void remove();
 };
 
 #endif

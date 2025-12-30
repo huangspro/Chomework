@@ -23,3 +23,10 @@ void Torpedo::move(size_t direction, size_t step){
 void Torpedo::show(){
   game->paintAt(row, col, '=');
 }
+
+void Torpedo::check_crash(){
+  Ship* tem=game->getShip(row,col);
+  if(tem!=nullptr){
+    tem->health-=10;
+  }
+}

@@ -16,6 +16,7 @@ public:
   void show();
   void fire();
   void update();
+  void remove();
 };
 
 #endif

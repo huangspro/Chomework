@@ -20,6 +20,7 @@
 using namespace std;
 
 class Game {
+public:
 	Gui gui;
 	vector<Ship*> AllShips;
 	vector<Weapon*> AllWeapons;
@@ -39,7 +40,7 @@ public:
 	bool getIsland(size_t, size_t);
 	Ship* getShip(size_t, size_t);
 	void addShips();
-	void addWeapons(size_t,size_t,int,size_t);
+	void addWeapons(size_t,size_t,int,size_t,int);
 	void addBomber();
 	void addPacks();
 };

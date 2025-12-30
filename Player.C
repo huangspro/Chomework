@@ -8,8 +8,8 @@ void Player::move(size_t direction, size_t step){
 
 void Player::show(){
   if(direction==UP || direction==DOWN){
-    game->paintAt(row, col>0?col-1:col, '<');
-    game->paintAt(row, col<MAXCOL?col+1:col, '>');    
+    game->paintAt(row, col-1, '<');
+    game->paintAt(row, col+1, '>');    
     game->paintAt(row, col, '=');
   }
   if(direction==LEFT || direction==RIGHT){
@@ -23,9 +23,26 @@ void Player::fire(){
   if(rand()%2==0)game->addWeapon(row, col, direction, Bullet);
   else game->addWeapon(row, col, direction, Torpedo);
 }*/
-
 void Player::update(){
-  return;
+  int temm=game->gui.get();
+  switch(temm){
+    case KEY_UP:
+      turn(UP);
+      move(UP,1);
+      break;
+    case KEY_DOWN:
+      turn(DOWN);
+      move(DOWN,1);
+      break;
+    case KEY_LEFT:
+      turn(LEFT);
+      move(LEFT,1);
+      break;
+    case KEY_RIGHT:
+      turn(RIGHT);
+      move(RIGHT,1);
+      break;
+  }
 }
 
 void Player::turn(int d){

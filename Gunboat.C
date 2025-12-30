@@ -10,15 +10,21 @@ void Gunboat::move(size_t direction,size_t step){
 void Gunboat::show(){
   game->paintAt(row, col, 'o');
 }
-/*
+
 void Gunboat::fire(){
-  game->addWeapon(row, col, direction, Bullet);
+  if(bullet<=0)remove();
+  int d[]={1,2,3,4};
+  game->addWeapons(row, col, Bullet_n,d[rand()%4], 1);
+  bullet--;
 }
 
-*/
 
 void Gunboat::update(){
-  size_t d=1;
   Ship::update();
-  move(direction, d);
+  move(direction, 1);
+  fire();
+}
+
+void Gunboat::remove(){
+  game->kill(this);
 }
