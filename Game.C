@@ -107,17 +107,29 @@ void Game::addShips(){
 void Game::kill(Item* other){
   if(other->type>=5 && other->type<=7){
     for(auto i=AllShips.begin();i!=AllShips.end();i++){
-      if(other->row==(*i)->row && other->col==(*i)->col)(*i)->showable=false;
+      if(other->row==(*i)->row && other->col==(*i)->col){
+        (*i)->showable=false;
+        delete (*i);
+        i=AllShips.erase(i);
+      }
     }
   }
   else if(other->type>=1 && other->type<=3){
     for(auto i=AllWeapons.begin();i!=AllWeapons.end();i++){
-      if(other->row==(*i)->row && other->col==(*i)->col)(*i)->showable=false;
+      if(other->row==(*i)->row && other->col==(*i)->col){
+        (*i)->showable=false;
+        delete (*i);
+        i=AllWeapons.erase(i);
+      }
     }
   }
   else if(other->type==4){
     for(auto i=AllBombers.begin();i!=AllBombers.end();i++){
-      if(other->row==(*i)->row && other->col==(*i)->col)(*i)->showable=false;
+      if(other->row==(*i)->row && other->col==(*i)->col){
+        (*i)->showable=false;
+        delete *i;
+        i=AllBombers.erase(i);
+      }
     }
   }
 }

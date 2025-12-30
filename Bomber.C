@@ -28,6 +28,11 @@ void Bomber::update(){
 }
 
 void Bomber::move(size_t directions, size_t step){
+  if(col <= 5 || col >= MAXCOL-5)remove();
   Item::move(direction, step);
+}
+
+void Bomber::remove(){
+  game->kill(this);
 }
 

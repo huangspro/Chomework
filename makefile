@@ -45,7 +45,7 @@ $(TARGET): $(OBJS)
 
 # Clean up
 clean:
-	rm -f *.o $(TARGET)
+	rm -f *.o
 
 # Remove all generated files
 distclean: clean
