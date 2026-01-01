@@ -20,6 +20,7 @@ void Gunboat::fire(){
 
 
 void Gunboat::update(){
+  if(health<=0)remove();
   Ship::update();
   move(direction, 1);
   fire();

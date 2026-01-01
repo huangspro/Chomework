@@ -25,8 +25,16 @@ void Torpedo::show(){
 }
 
 void Torpedo::check_crash(){
+  if(t>0)return;
   Ship* tem=game->getShip(row,col);
   if(tem!=nullptr){
     tem->health-=10;
   }
+}
+
+void Torpedo::update(){
+  t--;
+  Weapon::update();
+  move(direction,1);
+  check_crash();
 }

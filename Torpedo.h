@@ -9,7 +9,7 @@ public:
   void move(size_t direction, size_t step);
   void show();
   void remove(){};
-  void update(){};
+  void update();
   void check_crash();
 };
 #endif

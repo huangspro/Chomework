@@ -10,14 +10,24 @@ void Destroyer::move(size_t direction, size_t step){
 void Destroyer::show(){
   game->paintAt(row, col, 'O');
 }
-/*
-void Destroyer::fire(){
-  if(rand()%2==0)game->addWeapon(row, col, direction, Bullet);
-  else game->addWeapon(row, col, direction, Torpedo);
-}*/
+
 
 void Destroyer::update(){
   Ship::update();
   move(direction,1);
   if(rand()%10<2)fire();
+}
+
+void Destroyer::fire(){
+  if(bullet<=0 && torpedoes<=0)remove();
+  switch(rand()%2){
+    case 0:
+      if(bullet<=0)return;
+      game->addWeapons(row, col, Bullet_n,direction, 1);
+      bullet--;break;
+    case 1:
+      if(missile<=0)return;
+      game->addWeapons(row, col, Torpedo_n,direction, 1);
+      torpedoes--;break;
+  }
 }

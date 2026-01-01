@@ -2,7 +2,16 @@
 #include "Game.h"
 
 void Missile::move(size_t direction, size_t step){
+  if(row <=1 || row >=MAXROW-1 || col==MAXCOL-1 || col==1)remove();
   //use father class move
+  if(sender==1){
+    if(game->player->row<row)direction=LEFT;
+    else if(game->player->row>row)direction=RIGHT;
+    else{
+      if(game->player->col<col)direction=DOWN;
+      else direction=UP;
+    }
+  }
   Weapon::move(direction,step);
 }
 
@@ -11,6 +20,7 @@ void Missile::show(){
 }
 
 void Missile::check_crash(){
+  if(t>0)return;
   Ship* tem=game->getShip(row,col);
   if(tem==nullptr)return;
   else if(tem!=game->player && sender==0){
@@ -23,4 +33,15 @@ void Missile::check_crash(){
   }else{
     remove();
   }
+}
+
+void Missile::update(){
+  t--;
+  Weapon::update();
+  move(direction,1);
+  check_crash();
+}
+
+void Missile::remove(){
+  game->kill(this);
 }

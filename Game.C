@@ -54,8 +54,11 @@ void Game::addPacks(){
   if(rand()%50>2)return;
   size_t x=rand()%MAXROW+1;
   size_t y=rand()%MAXCOL+1;
-  //if(rand()%2==0)AllPacks.push_back(new WeaponPack(this, x,y));
-  //else AllPacks.push_back(new MedicalPack(this, x,y));
+  for(auto i=0;i<AllIslands.size();i++){
+      if(x==AllIslands[i]->row && y==AllIslands[i]->col)return;
+  }
+  if(rand()%2==0)AllPacks.push_back(new WeaponPack(this, x,y));
+  else AllPacks.push_back(new MedicalPack(this, x,y));
 }
 
 void Game::addBomber(){
@@ -67,7 +70,7 @@ void Game::addBomber(){
   AllBombers.push_back(newone);
 }
 void Game::addShips(){
-  if(rand()%50>2)return;
+  if(rand()%50>1)return;
   Ship* newone;
   size_t x=rand()%MAXROW+1;
   size_t y=rand()%MAXCOL+1;
@@ -112,20 +115,21 @@ void Game::kill(Item* other){
 }
 
 bool Game::getIsland(size_t row, size_t col){
-  if(row>0 && row<=MAXROW && col>0 && col<=MAXCOL)return false;
-  for(auto i=AllIslands.begin();i!=AllIslands.end();i++){
-      if(row==(*i)->row && col==(*i)->col)return true;
-      else return false;
+  for(auto i=0;i<AllIslands.size();i++){
+      if(row==AllIslands[i]->row && col==AllIslands[i]->col)return true;
   }
+  return false;
 }
 
 Ship* Game::getShip(size_t row, size_t col){
-  for(auto i=AllShips.begin();i!=AllShips.end();i++){
-      if(row==(*i)->row && col==(*i)->col)return (*i);
+  for(int i=0;i<AllShips.size();i++){
+      if(row==AllShips[i]->row && col==AllShips[i]->col)return AllShips[i];
   }
+  return nullptr;
 }
 
 void Game::addWeapons(size_t r,size_t c,int type,size_t d, int sender){
+  if(r<0 || r >MAXROW || c <0 || c>MAXCOL)return;
   Weapon* newone;
   switch(type){
     case Torpedo_n:

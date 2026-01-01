@@ -27,10 +27,10 @@
 
 //define the speed of each item
 #define Bullet_v 1
-#define Torpedo_v 2
-#define Missile_v 2
+#define Torpedo_v 1
+#define Missile_v 1
 #define Player_v 5
-#define Bomber_v 1
+#define Bomber_v 5
 #define Cruiser_v 5
 #define Destroyer_v 5
 #define Gunboat_v 3

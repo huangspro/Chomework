@@ -13,15 +13,18 @@ void Bullet::show(){
 }
 
 void Bullet::update(){
-  Item::update();
+  t--;
+  Weapon::update();
   move(direction,1);
-  //check_crash();
+  check_crash();
 }
 
 void Bullet::check_crash(){
+  if(t>0)return;
   Ship* tem=game->getShip(row,col);
   if(tem!=nullptr){
     tem->health-=1;
+    remove();
   }
 }
 
