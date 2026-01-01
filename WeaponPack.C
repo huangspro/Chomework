@@ -9,19 +9,32 @@ void WeaponPack::update(){
 void WeaponPack::remove(){
   game->kill(this);;
 }
-
-void WeaponPack::check_crash(){
-  for(int i=0;i<5;i++){
-    Ship* tem=game->getShips(row,col);
-    if(tem!=nullptr && tem==game->player){
-      tem->bullet+=20;
-      tem->torpedo+=1;
-      tem->missile+=1;
-      remove();
-    }
+void tem_f(Ship* i){
+  if(i!=nullptr && i==game->player){
+    i->bullet+=20;
+    i->torpedo+=1;
+    i->missile+=1;
+    remove();
   }
+}
+void WeaponPack::check_crash(){
+  Ship* tem1=game->getShip(row,col);
+  Ship* tem2=game->getShip(row-1,col);
+  Ship* tem3=game->getShip(row+1,col);
+  Ship* tem4=game->getShip(row,col-1);
+  Ship* tem5=game->getShip(row,col+1);
+  
+  tem_f(tem1);
+  tem_f(tem2);
+  tem_f(tem3);
+  tem_f(tem4);
+  tem_f(tem5);
 }
 
 void WeaponPack::show(){
   game->paintAt(row, col, 'W');
+}
+
+void WeaponPack::remove(){
+  game->kill(this);
 }

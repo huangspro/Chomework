@@ -13,8 +13,8 @@
 #include "Island.h"
 #include "Pack.h"
 #include "Ship.h"
-//#include "MedicalPack.h"
-//#include "WeaponPack.h"
+#include "MedicalPack.h"
+#include "WeaponPack.h"
 #include<algorithm>
 
 using namespace std;
