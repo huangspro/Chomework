@@ -9,7 +9,7 @@ void WeaponPack::remove(){
   game->kill(this);;
 }
 void WeaponPack::tem_f(Ship* i){
-  if(i!=nullptr && i==game->player){
+  if(i==game->player){
     i->bullet+=20;
     i->torpedoes+=1;
     i->missile+=1;

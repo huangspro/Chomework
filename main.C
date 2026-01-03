@@ -22,7 +22,8 @@ int main()
     while (true) {
         gettimeofday(&time_now, NULL);
         currentTime = (time_now.tv_sec * 1000) + (time_now.tv_usec / 500);
-        if (currentTime - oldTime < 100) {usleep(22);continue;}
+        //if (currentTime - oldTime < 100) {usleep(22);continue;}
+        usleep(60000);
         game.update();
         oldTime = currentTime;
     }

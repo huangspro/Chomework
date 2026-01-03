@@ -28,12 +28,14 @@ public:
 	vector<Bomber*> AllBombers;
 	vector<Pack*> AllPacks;
 	Player* player;
+	int tem=0;
 public:
 	Game();
 	Game(int);
 	~Game(){}
 	void paintAt(size_t r, size_t c, char x);
 	void printMsg(size_t r, size_t c, const char* s);
+	void printMsg(size_t r, size_t c, size_t s);
 	void update();
 	void updateItems();
 	void kill(Item*);

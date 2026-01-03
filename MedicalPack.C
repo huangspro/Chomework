@@ -30,6 +30,6 @@ void MedicalPack::check_crash(){
 }
 
 void MedicalPack::show(){
-  game->paintAt(row, col, 'W');
+  game->paintAt(row, col, 'M');
 }
 

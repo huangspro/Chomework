@@ -5,11 +5,11 @@ void Missile::move(size_t direction, size_t step){
   if(row <=1 || row >=MAXROW-1 || col==MAXCOL-1 || col==1)remove();
   //use father class move
   if(sender==1){
-    if(game->player->row<row)direction=LEFT;
-    else if(game->player->row>row)direction=RIGHT;
+    if(game->player->row<row)direction=UP;
+    else if(game->player->row>row)direction=DOWN;
     else{
-      if(game->player->col<col)direction=DOWN;
-      else direction=UP;
+      if(game->player->col<col)direction=LEFT;
+      else direction=RIGHT;
     }
   }
   Weapon::move(direction,step);

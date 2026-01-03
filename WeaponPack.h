@@ -6,7 +6,7 @@
 class Game;
 class WeaponPack : public Pack{
 public:
-  WeaponPack(Game* g, size_t r, size_t c):Pack(g,r,c,Weapon_n){}
+  WeaponPack(Game* g, size_t r, size_t c):Pack(g,r,c,WeaponPack_n){}
   void move(size_t direction, size_t step){};
   void show();
   void remove();

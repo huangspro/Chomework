@@ -19,6 +19,8 @@
 #define Weapon_n 10
 
 #define Player_n 11
+#define MedicalPack_n 12
+#define WeaponPack_n 13
 //define 4 direction
 #define UP 1
 #define DOWN 2
