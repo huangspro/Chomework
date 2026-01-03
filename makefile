@@ -10,6 +10,7 @@ TARGET = game
 
 # Source files (all .C files)
 SRCS = \
+        Item.C \
 	Bomber.C \
 	Bullet.C \
 	Cruiser.C \
@@ -17,9 +18,7 @@ SRCS = \
 	Game.C \
 	Gui.C \
 	Gunboat.C \
-	Item.C \
 	main.C \
-	MedicalPack.C \
 	Missile.C \
 	Pack.C \
 	Player.C \
@@ -27,7 +26,8 @@ SRCS = \
 	Torpedo.C \
 	Weapon.C \
 	Island.C \
-	WeaponPack.C
+	WeaponPack.C \
+	MedicalPack.C \
 
 # Object files
 OBJS = $(SRCS:.C=.o)

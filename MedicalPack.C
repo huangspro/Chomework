@@ -9,7 +9,7 @@ void MedicalPack::update(){
 void MedicalPack::remove(){
   game->kill(this);;
 }
-void tem_f_f(Ship* i){
+void MedicalPack::tem_f(Ship* i){
   if(i!=nullptr && i==game->player){
     i->health+=100;
     remove();
@@ -33,6 +33,3 @@ void MedicalPack::show(){
   game->paintAt(row, col, 'W');
 }
 
-void MedicalPack::remove(){
-  game->kill(this);
-}

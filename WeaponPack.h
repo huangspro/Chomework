@@ -1,7 +1,8 @@
 #ifndef _WEAPONPACK_H_
 #define _WEAPONPACK_H_
-
 #include "Pack.h"
+#include "Ship.h"
+
 class Game;
 class WeaponPack : public Pack{
 public:
@@ -10,7 +11,8 @@ public:
   void show();
   void remove();
   void update();
-  void check_crash();
+  void check_crash(); 
+  void tem_f(Ship*);
 };
 
 #endif

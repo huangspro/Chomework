@@ -2,6 +2,9 @@
 #define _MEDICALPACK_H_
 
 #include "Pack.h"
+#include "Ship.h"
+
+
 class Game;
 class MedicalPack : public Pack{
 public:
@@ -11,6 +14,7 @@ public:
   void remove();
   void update();
   void check_crash();
+  void tem_f(Ship*);
 };
 
 #endif

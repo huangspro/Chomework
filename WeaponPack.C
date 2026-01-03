@@ -1,6 +1,5 @@
 #include "WeaponPack.h"
 #include "Game.h"
-
 void WeaponPack::update(){
   Pack::update();
   check_crash();
@@ -9,10 +8,10 @@ void WeaponPack::update(){
 void WeaponPack::remove(){
   game->kill(this);;
 }
-void tem_f(Ship* i){
+void WeaponPack::tem_f(Ship* i){
   if(i!=nullptr && i==game->player){
     i->bullet+=20;
-    i->torpedo+=1;
+    i->torpedoes+=1;
     i->missile+=1;
     remove();
   }
@@ -35,6 +34,3 @@ void WeaponPack::show(){
   game->paintAt(row, col, 'W');
 }
 
-void WeaponPack::remove(){
-  game->kill(this);
-}
