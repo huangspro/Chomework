@@ -4,11 +4,18 @@
 #include <vector>
 #include "Game.h"
 #include <algorithm>
+#include<fstream>
 Game::Game()
 {   
+    int r, c, count;
+    std::ifstream f("../map_generator/battle_islands.bin", std::ios::binary);
+     f.read((char*)&count, 4);
+    std::vector<int> coords(count * 2);
+    f.read((char*)coords.data(), count * 2 * sizeof(int));
+    
     std::srand(std::time(nullptr));
-    for(int i=0;i<10;i++){
-      AllIslands.push_back(new Island(this,rand()%MAXROW+1,rand()%MAXCOL+1));
+    for(int i=0;i<coords.size()/2;i+=2){
+      AllIslands.push_back(new Island(this,coords[i],coords[i+1]));
     }
     player = new Player(this, 0.5*MAXROW, 0.5*MAXCOL);
     player->direction=UP;
