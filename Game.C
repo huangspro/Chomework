@@ -16,40 +16,6 @@ Game::Game()
     gui.get();
 }
 
-void Game::update(){
-  clear();refresh();
-  if(player->health<=0)exit(0);
-  //here can clear the killed ships
-  for(auto i=AllIslands.begin();i!=AllIslands.end();i++){
-    if((*i)->showable)(*i)->show();
-  }
-  for(auto i=AllWeapons.begin();i!=AllWeapons.end();i++){
-    if(!(*i)->showable)continue;
-    (*i)->update();
-    (*i)->show();
-  }
-  for(auto i=AllShips.begin();i!=AllShips.end();i++){
-    if(!(*i)->showable)continue;
-    (*i)->update();
-    if((*i)->health<=0)kill(*i);
-    if((*i)->showable)(*i)->show();
-  }
-  for(auto i=AllBombers.begin();i!=AllBombers.end();i++){
-    if(!(*i)->showable)continue;
-    (*i)->update();
-    if((*i)->showable)(*i)->show();
-  }
-  for(auto i=AllPacks.begin();i!=AllPacks.end();i++){
-    if(!(*i)->showable)continue;
-    (*i)->update();
-    if((*i)->showable)(*i)->show();
-  }
-  addShips();
-  addBomber();
-  addPacks();
-  player->update();
-  player->show();
-}
 void Game::addPacks(){
   if(rand()%50>2)return;
   size_t x=rand()%MAXROW+1;
@@ -97,6 +63,7 @@ void Game::addShips(){
 }
 
 void Game::kill(Item* other){
+  player->coin+=other->type==Desetroyer_n?1:(other->type==Cruiser_n?10:0);
   if(other->type>=5 && other->type<=7){
     for(auto i=AllShips.begin();i!=AllShips.end();i++){
       if(other->row==(*i)->row && other->col==(*i)->col)(*i)->showable=false;
@@ -155,4 +122,40 @@ void Game::paintAt(size_t r, size_t c, char x)
 void Game::printMsg(size_t r, size_t c, const char *s)
 {
     gui.printMsg(r, c, s);
+}
+
+
+void Game::update(){
+  clear();refresh();
+  if(player->health<=0)exit(0);
+  //here can clear the killed ships
+  for(auto i=AllIslands.begin();i!=AllIslands.end();i++){
+    if((*i)->showable)(*i)->show();
+  }
+  for(auto i=AllWeapons.begin();i!=AllWeapons.end();i++){
+    if(!(*i)->showable)continue;
+    (*i)->update();
+    (*i)->show();
+  }
+  for(auto i=AllShips.begin();i!=AllShips.end();i++){
+    if(!(*i)->showable)continue;
+    (*i)->update();
+    if((*i)->health<=0)kill(*i);
+    if((*i)->showable)(*i)->show();
+  }
+  for(auto i=AllBombers.begin();i!=AllBombers.end();i++){
+    if(!(*i)->showable)continue;
+    (*i)->update();
+    if((*i)->showable)(*i)->show();
+  }
+  for(auto i=AllPacks.begin();i!=AllPacks.end();i++){
+    if(!(*i)->showable)continue;
+    (*i)->update();
+    if((*i)->showable)(*i)->show();
+  }
+  addShips();
+  addBomber();
+  addPacks();
+  player->update();
+  player->show();
 }
