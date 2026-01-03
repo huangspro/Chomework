@@ -11,6 +11,13 @@ void Missile::move(size_t direction, size_t step){
       if(game->player->col<col)direction=LEFT;
       else direction=RIGHT;
     }
+  }else{
+    if(game->AllShips[0]->row<row)direction=UP;
+    else if(game->AllShips[0]->row>row)direction=DOWN;
+    else{
+      if(game->AllShips[0]->col<col)direction=LEFT;
+      else direction=RIGHT;
+    }
   }
   Weapon::move(direction,step);
 }

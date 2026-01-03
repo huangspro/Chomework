@@ -18,7 +18,7 @@ Game::Game()
 }
 
 void Game::addPacks(){
-  if(rand()%50>2)return;
+  if(rand()%400>2)return;
   size_t x=rand()%MAXROW+1;
   size_t y=rand()%MAXCOL+1;
   for(auto i=0;i<AllIslands.size();i++){
@@ -29,7 +29,7 @@ void Game::addPacks(){
 }
 
 void Game::addBomber(){
-  if(rand()%50>2)return;
+  if(rand()%200>2)return;
   size_t x=rand()%MAXROW+1;
   size_t y=rand()%MAXCOL+1;
   Bomber* newone=new Bomber(this, x,y);
@@ -37,7 +37,7 @@ void Game::addBomber(){
   AllBombers.push_back(newone);
 }
 void Game::addShips(){
-  if(rand()%100>1)return;
+  if(rand()%300>1)return;
   Ship* newone;
   size_t x=rand()%MAXROW+1;
   size_t y=rand()%MAXCOL+1;
@@ -147,6 +147,8 @@ void Game::update(){
   if(player->coins>=1000){
     player->coins=0;
   }
+  
+  attron(COLOR_PAIR(1));
   printMsg(0,MAXCOL+1,"coins: ");
   printMsg(0,MAXCOL+1+7,player->coins);
   printMsg(1,MAXCOL+1,"health: ");
@@ -157,7 +159,8 @@ void Game::update(){
   printMsg(3,MAXCOL+1+9,player->missile);
   printMsg(4,MAXCOL+1,"torpedo: ");
   printMsg(4,MAXCOL+1+9,player->torpedoes);
-  
+  attroff(COLOR_PAIR(1));
+  attron(COLOR_PAIR(2));
 
   //here can clear the killed ships
   for(auto i=AllIslands.begin();i!=AllIslands.end();i++){

@@ -8,6 +8,7 @@ void Cruiser::move(size_t direction, size_t step){
 }
 
 void Cruiser::show(){
+  Item::show();
   game->paintAt(row, col, '<');
   if(col<MAXCOL)game->paintAt(row, col+1, '>');
 }

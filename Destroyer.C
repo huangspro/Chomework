@@ -8,6 +8,7 @@ void Destroyer::move(size_t direction, size_t step){
 }
 
 void Destroyer::show(){
+  Item::show();
   game->paintAt(row, col, 'O');
 }
 

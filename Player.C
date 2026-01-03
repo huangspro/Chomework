@@ -28,6 +28,7 @@ void Player::move(size_t direction, size_t step){
 }
 
 void Player::show(){
+  attron(COLOR_PAIR(1));
   if(direction==LEFT || direction==RIGHT){
     game->paintAt(row, col-1, '<');
     game->paintAt(row, col+1, '>');    
@@ -38,6 +39,8 @@ void Player::show(){
     game->paintAt(row>0?row-1:row, col, '^');
     game->paintAt(row, col, '"');
   }
+  attroff(COLOR_PAIR(1));
+  attron(COLOR_PAIR(2));
 }
 
 void Player::fire(){}
