@@ -147,7 +147,7 @@ void Game::printMsg(size_t r, size_t c, size_t s)
 
 void Game::update(){
   tem++;
-  if(tem%10==0)player->bullet+=100;
+  if(tem%10==0)player->bullet+=1;
   else if(tem%1000==0)player->missile+=5;
   erase();
   if(player->health<=0)exit(0);
