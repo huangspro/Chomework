@@ -6,6 +6,6 @@ git add .
 echo "commit========================================="
 git commit -m "1.0"
 echo "push============================================"
-git push
+git push --force
 
 echo "finished"
