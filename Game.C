@@ -7,7 +7,7 @@
 #include<fstream>
 Game::Game()
 {   
-    /*int r, c, count;
+    int r, c, count;
     std::ifstream f("../map_generator/battle_islands.bin", std::ios::binary);
      f.read((char*)&count, 4);
     std::vector<int> coords(count * 2);
@@ -16,7 +16,7 @@ Game::Game()
     std::srand(std::time(nullptr));
     for(int i=0;i<coords.size()/2;i+=2){
       AllIslands.push_back(new Island(this,coords[i],coords[i+1]));
-    }*/
+    }
     player = new Player(this, 0.5*MAXROW, 0.5*MAXCOL);
     player->direction=UP;
     player->showable=true;
@@ -222,6 +222,8 @@ void Game::update(){
       player->fire1(0,RIGHT);break;
     case 'm':
       player->fire2();break;
+    case 't':
+      player->fire3();break;
   }
   player->show();
   refresh();

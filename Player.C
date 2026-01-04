@@ -64,6 +64,11 @@ void Player::fire2(){
   game->addWeapons(row, col, Missile_n,direction, 0);
   missile--;
 }
+void Player::fire3(){
+  if((torpedoes)<=0 || direction==UP || direction==DOWN)return;
+  game->addWeapons(row, col, Torpedo_n,direction, 0);
+  torpedoes--;
+}
 void Player::update(){}
 
 void Player::turn(int d){

@@ -16,6 +16,7 @@ public:
   void fire();
   void fire1(int,int);
   void fire2();
+  void fire3();
   void update();
   void turn(int);
 };

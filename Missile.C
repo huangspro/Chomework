@@ -1,6 +1,6 @@
 #include "Missile.h"
 #include "Game.h"
-
+#include<stdlib.h>
 void Missile::move(size_t direction, size_t step){
   if(row <=1 || row >=MAXROW-1 || col==MAXCOL-1 || col==1)remove();
   //use father class move
@@ -12,10 +12,11 @@ void Missile::move(size_t direction, size_t step){
       else direction=RIGHT;
     }
   }else{
-    if(game->AllShips[0]->row<row)direction=UP;
-    else if(game->AllShips[0]->row>row)direction=DOWN;
+    if(p!=nullptr)p=game->AllShips[0];
+    if(p->row<row)direction=UP;
+    else if(p->row>row)direction=DOWN;
     else{
-      if(game->AllShips[0]->col<col)direction=LEFT;
+      if(p->col<col)direction=LEFT;
       else direction=RIGHT;
     }
   }

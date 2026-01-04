@@ -18,7 +18,7 @@ void Bomber::show(){
 }
 
 void Bomber::fire(){
-  if(bullet<=0 && missile<=0)remove();
+  if(bullet<=0 && missile<=0)return;
   switch(rand()%2){
     case 0:
       if(bullet<=0)return;
@@ -28,7 +28,7 @@ void Bomber::fire(){
       bullet--;break;
     case 1:
       if(missile<=0)return;
-      game->addWeapons(row, col, Missile_n,direction, 1);
+      game->addWeapons(row, col, Torpedo_n,direction, 1);
       missile--;break;
   }
 }
