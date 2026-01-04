@@ -7,15 +7,17 @@
 #include<fstream>
 Game::Game()
 {   
-    int r, c, count;
-    std::ifstream f("../map_generator/battle_islands.bin", std::ios::binary);
-     f.read((char*)&count, 4);
-    std::vector<int> coords(count * 2);
-    f.read((char*)coords.data(), count * 2 * sizeof(int));
+    std::vector<int> coords(100);
+    std::ifstream f("map/battle_islands.bin", std::ios::binary);
+    if (f) {
+        f.read(reinterpret_cast<char*>(coords.data()), 100 * sizeof(int));
+        f.close();
+    }
     
     std::srand(std::time(nullptr));
-    for(int i=0;i<coords.size()/2;i+=2){
+    for(int i=0;i<50;i+=2){
       AllIslands.push_back(new Island(this,coords[i],coords[i+1]));
+      //AllIslands.push_back(new Island(this,rand()%MAXROW,rand()%MAXCOL));
     }
     player = new Player(this, 0.5*MAXROW, 0.5*MAXCOL);
     player->direction=UP;
@@ -168,29 +170,29 @@ void Game::update(){
   attron(COLOR_PAIR(2));
 
   //here can clear the killed ships
-  for(auto i=AllIslands.begin();i!=AllIslands.end();i++){
-    if((*i)->showable)(*i)->show();
+  for (int i = 0; i < AllIslands.size(); ++i){
+    if (AllIslands[i]->showable) AllIslands[i]->show();
   }
-  for(auto i=AllWeapons.begin();i!=AllWeapons.end();i++){
-    if(!(*i)->showable)continue;
-    (*i)->update();
-    (*i)->show();
+  for (int i = 0; i < AllWeapons.size(); ++i) {
+    if (!AllWeapons[i]->showable) { delete AllWeapons[i]; AllWeapons.erase(AllWeapons.begin() + i); i--; continue; }
+    AllWeapons[i]->update();
+    AllWeapons[i]->show();
   }
-  for(auto i=AllShips.begin();i!=AllShips.end();i++){
-    if(!(*i)->showable)continue;
-    (*i)->update();
-    if((*i)->health<=0)kill(*i);
-    if((*i)->showable)(*i)->show();
+  for (int i = 0; i < AllShips.size(); ++i) {
+    if (!AllShips[i]->showable) { delete AllShips[i]; AllShips.erase(AllShips.begin() + i); break;}
+    AllShips[i]->update();
+    if (AllShips[i]->health <= 0) kill(AllShips[i]);
+    if (AllShips[i]->showable) AllShips[i]->show();
   }
-  for(auto i=AllBombers.begin();i!=AllBombers.end();i++){
-    if(!(*i)->showable)continue;
-    (*i)->update();
-    if((*i)->showable)(*i)->show();
+  for (int i = 0; i < AllBombers.size(); ++i) {
+    if (!AllBombers[i]->showable) { delete AllBombers[i]; AllBombers.erase(AllBombers.begin() + i); i--; continue; }
+    AllBombers[i]->update();
+    if (AllBombers[i]->showable) AllBombers[i]->show();
   }
-  for(auto i=AllPacks.begin();i!=AllPacks.end();i++){
-    if(!(*i)->showable)continue;
-    (*i)->update();
-    if((*i)->showable)(*i)->show();
+  for (int i = 0; i < AllPacks.size(); ++i) {
+    if (!AllPacks[i]->showable) { delete AllPacks[i]; AllPacks.erase(AllPacks.begin() + i); i--; continue; }
+    AllPacks[i]->update();
+    if (AllPacks[i]->showable) AllPacks[i]->show();
   }
   addShips();
   addBomber();
