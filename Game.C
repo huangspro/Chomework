@@ -7,7 +7,7 @@
 #include<fstream>
 Game::Game()
 {   
-    int r, c, count;
+    /*int r, c, count;
     std::ifstream f("../map_generator/battle_islands.bin", std::ios::binary);
      f.read((char*)&count, 4);
     std::vector<int> coords(count * 2);
@@ -16,7 +16,7 @@ Game::Game()
     std::srand(std::time(nullptr));
     for(int i=0;i<coords.size()/2;i+=2){
       AllIslands.push_back(new Island(this,coords[i],coords[i+1]));
-    }
+    }*/
     player = new Player(this, 0.5*MAXROW, 0.5*MAXCOL);
     player->direction=UP;
     player->showable=true;
@@ -44,28 +44,26 @@ void Game::addBomber(){
   AllBombers.push_back(newone);
 }
 void Game::addShips(){
-  if(rand()%300>1)return;
+  if(rand()%100>1)return;
   Ship* newone;
   size_t x=rand()%MAXROW+1;
   size_t y=rand()%MAXCOL+1;
   for(auto i=AllIslands.begin();i!=AllIslands.end();i++){
-    if(x!=(*i)->row && y!=(*i)->col){
-      switch(rand()%3){
-        case 0:
-          newone=new Gunboat(this, x,y);
-          newone->direction=UP;
-          AllShips.push_back(newone);break;
-        case 1:
-          newone=new Cruiser(this, x,y);
-          newone->direction=LEFT;
-          AllShips.push_back(newone);break;
-        case 2:
-          newone=new Destroyer(this, x,y);
-          newone->direction=UP;
-          AllShips.push_back(newone);break;
-      }
-    }
-    else return;
+    if(x==(*i)->row && y==(*i)->col)return;
+  }
+  switch(rand()%3){
+    case 0:
+      newone=new Gunboat(this, x,y);
+      newone->direction=UP;
+      AllShips.push_back(newone);return;
+    case 1:
+      newone=new Cruiser(this, x,y);
+      newone->direction=LEFT;
+      AllShips.push_back(newone);return;
+    case 2:
+      newone=new Destroyer(this, x,y);
+      newone->direction=UP;
+      AllShips.push_back(newone);return;
   }
   
 }
