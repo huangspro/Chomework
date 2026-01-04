@@ -46,7 +46,7 @@ void Game::addBomber(){
   AllBombers.push_back(newone);
 }
 void Game::addShips(){
-  if(rand()%100>1)return;
+  if(rand()%100>5)return;
   Ship* newone;
   size_t x=rand()%MAXROW+1;
   size_t y=rand()%MAXCOL+1;
@@ -153,6 +153,7 @@ void Game::update(){
   if(player->health<=0)exit(0);
   if(player->coins>=1000){
     player->coins=0;
+    level++;
   }
   
   attron(COLOR_PAIR(1));
@@ -166,6 +167,8 @@ void Game::update(){
   printMsg(3,MAXCOL+1+9,player->missile);
   printMsg(4,MAXCOL+1,"torpedo: ");
   printMsg(4,MAXCOL+1+9,player->torpedoes);
+  printMsg(5,MAXCOL+1,"level: ");
+  printMsg(5,MAXCOL+1+7,level);
   attroff(COLOR_PAIR(1));
   attron(COLOR_PAIR(2));
 

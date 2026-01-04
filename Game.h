@@ -29,6 +29,7 @@ public:
 	vector<Pack*> AllPacks;
 	Player* player;
 	int tem=0;
+	int level=1;
 public:
 	Game();
 	Game(int);
