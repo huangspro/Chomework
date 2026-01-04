@@ -40,7 +40,6 @@ void Player::show(){
     game->paintAt(row, col, '"');
   }
   attroff(COLOR_PAIR(1));
-  attron(COLOR_PAIR(2));
 }
 
 void Player::fire(){}

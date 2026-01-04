@@ -170,14 +170,19 @@ void Game::update(){
   attron(COLOR_PAIR(2));
 
   //here can clear the killed ships
+  attron(COLOR_PAIR(5));
   for (int i = 0; i < AllIslands.size(); ++i){
     if (AllIslands[i]->showable) AllIslands[i]->show();
   }
+  attroff(COLOR_PAIR(5));
+  attron(COLOR_PAIR(6));
   for (int i = 0; i < AllWeapons.size(); ++i) {
     if (!AllWeapons[i]->showable) { delete AllWeapons[i]; AllWeapons.erase(AllWeapons.begin() + i); i--; continue; }
     AllWeapons[i]->update();
     AllWeapons[i]->show();
   }
+  attroff(COLOR_PAIR(6));
+  attron(COLOR_PAIR(2));
   for (int i = 0; i < AllShips.size(); ++i) {
     if (!AllShips[i]->showable) { delete AllShips[i]; AllShips.erase(AllShips.begin() + i); break;}
     AllShips[i]->update();
@@ -188,12 +193,15 @@ void Game::update(){
     if (!AllBombers[i]->showable) { delete AllBombers[i]; AllBombers.erase(AllBombers.begin() + i); i--; continue; }
     AllBombers[i]->update();
     if (AllBombers[i]->showable) AllBombers[i]->show();
-  }
+  }  
+  attroff(COLOR_PAIR(2));
+  attron(COLOR_PAIR(4));
   for (int i = 0; i < AllPacks.size(); ++i) {
     if (!AllPacks[i]->showable) { delete AllPacks[i]; AllPacks.erase(AllPacks.begin() + i); i--; continue; }
     AllPacks[i]->update();
     if (AllPacks[i]->showable) AllPacks[i]->show();
   }
+  attroff(COLOR_PAIR(4));
   addShips();
   addBomber();
   addPacks();
