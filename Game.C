@@ -27,7 +27,7 @@ Game::Game()
 }
 
 void Game::addPacks(){
-  if(rand()%400>2)return;
+  if(rand()%400>5-level)return;
   size_t x=rand()%MAXROW+1;
   size_t y=rand()%MAXCOL+1;
   for(auto i=0;i<AllIslands.size();i++){
@@ -38,7 +38,7 @@ void Game::addPacks(){
 }
 
 void Game::addBomber(){
-  if(rand()%200>2)return;
+  if(rand()%200>2*level*level*level)return;
   size_t x=rand()%MAXROW+1;
   size_t y=rand()%MAXCOL+1;
   Bomber* newone=new Bomber(this, x,y);
@@ -46,7 +46,7 @@ void Game::addBomber(){
   AllBombers.push_back(newone);
 }
 void Game::addShips(){
-  if(rand()%100>1)return;
+  if(rand()%100>2*level*level*level)return;
   Ship* newone;
   size_t x=rand()%MAXROW+1;
   size_t y=rand()%MAXCOL+1;
@@ -150,9 +150,9 @@ void Game::update(){
   if(tem%10==0)player->bullet+=1;
   else if(tem%1000==0)player->missile+=5;
   erase();
-  if(player->health<=0)exit(0);
-  if(player->coins>=1000){
+  if(player->coins>=10){
     player->coins=0;
+    level++;
   }
   
   attron(COLOR_PAIR(1));
@@ -166,6 +166,8 @@ void Game::update(){
   printMsg(3,MAXCOL+1+9,player->missile);
   printMsg(4,MAXCOL+1,"torpedo: ");
   printMsg(4,MAXCOL+1+9,player->torpedoes);
+  printMsg(5,MAXCOL+1,"level: ");
+  printMsg(5,MAXCOL+1+7,level);
   attroff(COLOR_PAIR(1));
   attron(COLOR_PAIR(2));
 
@@ -237,5 +239,5 @@ void Game::update(){
   }
   player->show();
   refresh();
-
+  if(player->health<=0)exit(0);
 }

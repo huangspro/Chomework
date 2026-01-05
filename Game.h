@@ -28,6 +28,7 @@ public:
 	vector<Bomber*> AllBombers;
 	vector<Pack*> AllPacks;
 	Player* player;
+	int level=1;
 	int tem=0;
 public:
 	Game();
