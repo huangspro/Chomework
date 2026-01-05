@@ -150,7 +150,8 @@ void Game::update(){
   if(tem%10==0)player->bullet+=1;
   else if(tem%1000==0)player->missile+=5;
   erase();
-  if(player->coins>=10){
+  if(level==3)exit(0);
+  if(player->coins>=1000){
     player->coins=0;
     level++;
   }
@@ -168,6 +169,7 @@ void Game::update(){
   printMsg(4,MAXCOL+1+9,player->torpedoes);
   printMsg(5,MAXCOL+1,"level: ");
   printMsg(5,MAXCOL+1+7,level);
+  printMsg(MAXROW+1,0,"Please read the README.txt to get more details. By the way, map file is in map/");
   attroff(COLOR_PAIR(1));
   attron(COLOR_PAIR(2));
 

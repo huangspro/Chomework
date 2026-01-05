@@ -50,6 +50,7 @@ void Player::fire1(int mode,int d){
     game->addWeapons(row, col, Bullet_n,direction, 0);
     bullet--;
   }else{
+    if(bullet<3)return;
     if(direction==LEFT || direction==RIGHT){
       game->addWeapons(row, col, Bullet_n,d, 0);
       game->addWeapons(row-1, col, Bullet_n,d, 0);
