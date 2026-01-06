@@ -6,7 +6,7 @@ class Player : public Ship{
 public:
   size_t coins = 0;
   Player(Game* g, size_t r, size_t c):Ship(g,r,c,Player_v,Player_n){
-    health=1000;
+    health=10;
     bullet=100;
     missile=5;
     torpedoes=0;

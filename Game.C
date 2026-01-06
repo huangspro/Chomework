@@ -238,8 +238,10 @@ void Game::update(){
       player->fire2();break;
     case 't':
       player->fire3();break;
+    case 'q':
+      endwin();exit(0);
   }
   player->show();
   refresh();
-  if(player->health<=0)exit(0);
+  if(player->health<=0){endwin();std::cout<<"You are dead ! "<<std::endl;exit(0);}
 }

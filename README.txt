@@ -24,6 +24,8 @@ For the user:
     Press 'T' to launch a torpedo.
     Press 'M' to launch a missile.
     Use the 'arrow' keys to move the ship.
+    Press 'Q' to end the game
+    .
     If the player is ship is hit, its health will decrease.
     The player ship can pick up weapon packs or medical packs if they are nearby.
     Each time an enemy ship is destroyed, the player's coins will increase.
